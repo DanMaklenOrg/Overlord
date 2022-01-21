@@ -5,6 +5,14 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Overlord.Core</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup Label="Dev">
+        <PackageReference Include="Amazon.JSII.Analyzers" Version="*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.CDK.Lib" Version="2.8.0" />
+    </ItemGroup>
 </Project>

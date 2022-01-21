@@ -1,3 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace Overlord.Core;
 
-Console.WriteLine("Hello, World! Test");
+using Amazon.CDK;
+
+internal static class Program
+{
+    public static void Main()
+    {
+        App app = new App();
+        CoreStack _ = new CoreStack(app);
+        app.Synth();
+    }
+}

@@ -1,8 +1,10 @@
 namespace Overlord.Infra.SinglePageApplicationWebsite.Constructs;
 
 using Amazon.CDK;
+using Amazon.CDK.AWS.CertificateManager;
+using Amazon.CDK.AWS.CloudFront;
+using Amazon.CDK.AWS.CloudFront.Origins;
 using Amazon.CDK.AWS.S3;
-using Amazon.CDK.AWS.S3.Deployment;
 using global::Constructs;
 
 internal class SinglePageApplicationStack : Stack
@@ -14,19 +16,29 @@ internal class SinglePageApplicationStack : Stack
             TerminationProtection = true,
         })
     {
-        Bucket bucket = new Bucket(this, "hosting-bucket", new BucketProps
+        IBucket bucket = new Bucket(this, "hosting-bucket", new BucketProps
         {
             BucketName = $"{config.Name.ToLower()}-hosting-bucket",
             WebsiteIndexDocument = "index.html",
+            WebsiteErrorDocument = "index.html",
             PublicReadAccess = true,
             RemovalPolicy = RemovalPolicy.DESTROY,
             AutoDeleteObjects = true,
         });
 
-        BucketDeployment _ = new BucketDeployment(this, "deployment-files", new BucketDeploymentProps
+        ICertificate certificate = Certificate.FromCertificateArn(this,
+            "domainCertificate",
+            config.CertificateArn);
+
+        Distribution _ = new Distribution(this, "edgeDistribution", new DistributionProps
         {
-            Sources = new[] { Source.Asset(config.WebsiteResourcesDir) },
-            DestinationBucket = bucket,
+            DefaultBehavior = new BehaviorOptions
+            {
+                Origin = new S3Origin(bucket),
+                ViewerProtocolPolicy = ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+            },
+            DomainNames = new[] { config.DomainName, $"*.{config.DomainName}" },
+            Certificate = certificate,
         });
     }
 }

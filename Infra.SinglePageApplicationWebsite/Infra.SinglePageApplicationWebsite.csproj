@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Overlord.Infra.SinglePageApplicationWebsite</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup Label="Dev">
+        <PackageReference Include="Amazon.JSII.Analyzers" Version="*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.CDK.Lib" Version="2.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="cdk.out\**" />
+    </ItemGroup>
+</Project>

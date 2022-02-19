@@ -40,5 +40,11 @@ internal class SinglePageApplicationStack : Stack
             DomainNames = new[] { config.DomainName, $"*.{config.DomainName}" },
             Certificate = certificate,
         });
+
+        CfnOutput __ = new CfnOutput(this, "bucket-arn", new CfnOutputProps
+        {
+            ExportName = "BucketArn",
+            Value = bucket.BucketArn,
+        });
     }
 }

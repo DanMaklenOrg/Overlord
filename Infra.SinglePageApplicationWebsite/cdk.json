@@ -1,8 +1,3 @@
 {
-  "app": "dotnet run --project ./Infra.SinglePageApplicationWebsite.csproj",
-  "context": {
-    "Name": "TestWebsite",
-    "DomainName": "danmaklen.com",
-    "CertificateArn": "arn:aws:acm:us-east-1:464787150360:certificate/81c97225-8bc4-4885-bbc8-928c9f1cc938"
-  }
+  "app": "dotnet run --project ./Infra.SinglePageApplicationWebsite.csproj"
 }

@@ -16,4 +16,4 @@ outputs:
 runs:
   using: docker
   image: Dockerfile
-  entrypoint: entrypoint.sh
+  entrypoint: "deployInfraSpa.sh ${{name}} ${{domainName}} ${{certificateArn}}"

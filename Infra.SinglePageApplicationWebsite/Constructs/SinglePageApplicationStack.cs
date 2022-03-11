@@ -26,25 +26,25 @@ internal class SinglePageApplicationStack : Stack
             AutoDeleteObjects = true,
         });
 
-        ICertificate certificate = Certificate.FromCertificateArn(this,
-            "domainCertificate",
-            config.CertificateArn);
+        ICertificate certificate = Certificate.FromCertificateArn(this, "domainCertificate", config.CertificateArn);
 
-        Distribution _ = new Distribution(this, "edgeDistribution", new DistributionProps
+        Distribution edgeDistribution = new Distribution(this, "edgeDistribution", new DistributionProps
         {
-            DefaultBehavior = new BehaviorOptions
-            {
-                Origin = new S3Origin(bucket),
-                ViewerProtocolPolicy = ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-            },
+            DefaultBehavior = new BehaviorOptions { Origin = new S3Origin(bucket), ViewerProtocolPolicy = ViewerProtocolPolicy.REDIRECT_TO_HTTPS },
             DomainNames = new[] { config.DomainName, $"*.{config.DomainName}" },
             Certificate = certificate,
         });
 
-        CfnOutput __ = new CfnOutput(this, "bucket-arn", new CfnOutputProps
+        CfnOutput _ = new CfnOutput(this, "bucket-arn", new CfnOutputProps
         {
-            ExportName = "BucketArn",
+            ExportName = "bucket-arn",
             Value = bucket.BucketArn,
+        });
+
+        CfnOutput __ = new CfnOutput(this, "edge-distribute-endpoint", new CfnOutputProps
+        {
+            ExportName = "edge-distribute-endpoint",
+            Value = edgeDistribution.DistributionDomainName,
         });
     }
 }

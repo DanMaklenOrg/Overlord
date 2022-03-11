@@ -1,0 +1,19 @@
+name: "Deploy Infra - SPA"
+description: "Deploy Single Page Application Infrastructure."
+inputs:
+  name:
+    description: "Name of the SPA."
+    required: true
+  domainName:
+    description: "Domain Name that will direct to this project."
+    required: true
+  certificateArn:
+    description: "Certification ARN associated with this domain name and '*.{domainName}'."
+    required: true
+outputs:
+  bucketArn:
+    description: "Bucket Arn to deploy the SPA on."
+runs:
+  using: docker
+  image: Dockerfile
+  entrypoint: entrypoint.sh

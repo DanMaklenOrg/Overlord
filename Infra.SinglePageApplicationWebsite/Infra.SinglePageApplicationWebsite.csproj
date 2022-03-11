@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Overlord.Core</RootNamespace>
+        <RootNamespace>Overlord.Infra.SinglePageApplicationWebsite</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup Label="Dev">

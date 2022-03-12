@@ -31,7 +31,7 @@ jobs:
 #        if: github.ref == 'refs/heads/master'
         run: docker push ghcr.io/danmaklenorg/deploy-infra-spa:latest
       - name: Deploy Infrastructure
-        uses: Infra.SinglePageApplicationWebsite
+        uses: ./Infra.SinglePageApplicationWebsite
         with:
           name: ""
           domainName: ""

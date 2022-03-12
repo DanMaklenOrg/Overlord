@@ -7,9 +7,6 @@
         <option name="sourceFilePath" value="Infra.SinglePageApplicationWebsite/Dockerfile" />
       </settings>
     </deployment>
-    <method v="2">
-      <option name="Build" default="false" projectName="Infra.SinglePageApplicationWebsite"
-              projectPath="file://$PROJECT_DIR$/Infra.SinglePageApplicationWebsite/Infra.SinglePageApplicationWebsite.csproj" />
-    </method>
+    <method v="2" />
   </configuration>
 </component>

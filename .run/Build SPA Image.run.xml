@@ -7,6 +7,8 @@
         <option name="sourceFilePath" value="Infra.SinglePageApplicationWebsite/Dockerfile" />
       </settings>
     </deployment>
-    <method v="2" />
+    <method v="2">
+      <option name="Publish Solution" enabled="true" />
+    </method>
   </configuration>
 </component>

@@ -19,7 +19,7 @@ jobs:
       - name: Build Binaries
         run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
       - name: Build Image
-        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest .
+        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest . -o .
       - run: ls
 #      - name: Upload Docker Image Artifacts
 #        uses: actions/upload-artifact@v3

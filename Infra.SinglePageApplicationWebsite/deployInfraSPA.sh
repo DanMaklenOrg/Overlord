@@ -6,7 +6,7 @@ certificateArn=$3
 
 outputFile="cdk.out/outputs.json"
 
-echo "Hello World"
+echo "Running CDK deploy"
 cdk deploy \
   --app=Infra.SinglePageApplicationWebsite \
   --require-approval never \
@@ -15,7 +15,6 @@ cdk deploy \
   -c DomainName="$domainName" \
   -c CertificateArn="$certificateArn" \
   --dry-run --profile=personal
-
 
 bucketArn=$(jq ".[].bucket-arn" $outputFile)
 edgeDomain=$(jq ".[].edge-distribute-endpoint" $outputFile)

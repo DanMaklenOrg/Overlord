@@ -16,7 +16,7 @@ outputs:
 runs:
   using: docker
   image: docker://ghcr.io/danmaklenorg/deploy-infra-spa:latest
-  args:
-    - ${{inputs.name}}
-    - ${{inputs.domainName}}
-    - ${{inputs.certificateArn}}
+#  args:
+#    - ${{inputs.name}}
+#    - ${{inputs.domainName}}
+#    - ${{inputs.certificateArn}}

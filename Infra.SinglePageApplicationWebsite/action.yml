@@ -15,7 +15,7 @@ outputs:
     description: "Bucket Arn to deploy the SPA on."
 runs:
   using: docker
-  image: ghcr.io/danmaklenorg/deploy-infra-spa:latest
+  image: docker://ghcr.io/danmaklenorg/deploy-infra-spa:latest
   args:
     - ${{inputs.name}}
     - ${{inputs.domainName}}

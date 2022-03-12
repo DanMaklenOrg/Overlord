@@ -9,4 +9,5 @@ RUN npm install -g aws-cdk
 COPY bin/Release/net6.0/publish .
 COPY deployInfraSPA.sh .
 
-ENTRYPOINT ["./deployInfraSPA.sh"]
+#ENTRYPOINT ["./deployInfraSPA.sh"]
+ENTRYPOINT ["ls"]

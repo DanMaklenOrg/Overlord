@@ -20,6 +20,6 @@ jobs:
         run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
       - name: Build Image
         run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest .
-      - name: Publish Image to ghcr.io
+      - name: Publish Image to `ghcr.io`
         if: github.ref == 'refs/heads/master'
         run: docker push ghcr.io/danmaklenorg/deploy-infra-spa:latest

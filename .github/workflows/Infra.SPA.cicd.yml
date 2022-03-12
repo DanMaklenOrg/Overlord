@@ -9,10 +9,12 @@ jobs:
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Infra.SinglePageApplicationWebsite
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
-      - run: cd Infra.SinglePageApplicationWebsite
       - run: ls
       - name: Build Binaries
         run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false

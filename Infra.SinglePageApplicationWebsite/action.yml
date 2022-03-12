@@ -16,7 +16,7 @@ outputs:
 runs:
   using: docker
   image: docker://ghcr.io/danmaklenorg/deploy-infra-spa:latest
-  entrypoint: Infra.SinglePageApplicationWebsite/deployInfraSPA.sh
+  entrypoint: ls Infra.SinglePageApplicationWebsite
 #  args:
 #    - ${{inputs.name}}
 #    - ${{inputs.domainName}}

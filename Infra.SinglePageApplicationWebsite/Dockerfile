@@ -10,4 +10,4 @@ COPY bin/Release/net6.0/publish .
 COPY deployInfraSPA.sh .
 
 #ENTRYPOINT ["./deployInfraSPA.sh"]
-ENTRYPOINT ["ls", "."]
+ENTRYPOINT ["ls"]

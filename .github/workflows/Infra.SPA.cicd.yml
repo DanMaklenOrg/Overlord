@@ -19,23 +19,7 @@ jobs:
       - name: Build Binaries
         run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
       - name: Build Image
-        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest . -o .
-      - run: ls
-#      - name: Upload Docker Image Artifacts
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: dockerImage
-#          path: .
-
-  publish:
-    name: Publish Docker Image
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: build
-    steps:
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dockerImage
+        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest .
       - name: Publish Image to ghcr.io
+        if: github.ref == 'refs/heads/master'
         run: docker push ghcr.io/danmaklenorg/deploy-infra-spa:latest

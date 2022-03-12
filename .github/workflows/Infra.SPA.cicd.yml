@@ -1,0 +1,25 @@
+name: Infra SPA Action Docker Image CICD
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Infra.SinglePageApplicationWebsite
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - run: ls
+      - name: Build Binaries
+        run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
+      - name: Build Image
+        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest .
+      - name: Publish Image to `ghcr.io`
+        if: github.ref == 'refs/heads/master'
+        run: docker push ghcr.io/danmaklenorg/deploy-infra-spa:latest

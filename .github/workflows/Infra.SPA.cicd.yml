@@ -9,17 +9,14 @@ jobs:
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Infra.SinglePageApplicationWebsite
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
       - run: ls
       - name: Build Binaries
-        run: dotnet publish --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
+        run: dotnet publish Infra.SinglePageApplicationWebsite --configuration Release /p:CopyOutputSymbolsToPublishDirectory=false
       - name: Build Image
-        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest .
+        run: docker build -f Dockerfile -t ghcr.io/danmaklenorg/deploy-infra-spa:latest Infra.SinglePageApplicationWebsite
       - name: login to GitHub Container Registry
 #        if: github.ref == 'refs/heads/master'
         uses: docker/login-action@v1

@@ -2,6 +2,11 @@
 
 set -e
 
+echo "$GITHUB_ACTIONS"
+echo "$AWS_DEFAULT_REGION"
+echo $GITHUB_ACTIONS
+echo $AWS_DEFAULT_REGION
+
 name=$1
 domainName=$2
 certificateArn=$3

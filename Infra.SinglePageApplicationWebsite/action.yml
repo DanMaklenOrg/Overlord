@@ -11,13 +11,12 @@ inputs:
     description: "Certification ARN associated with this domain name and '*.{domainName}'."
     required: true
 outputs:
-  bucketArn:
+  bucketName:
     description: "Bucket Arn to deploy the SPA on."
 runs:
   using: docker
-  image: docker://ghcr.io/danmaklenorg/deploy-infra-spa:latest
-  entrypoint: ls Infra.SinglePageApplicationWebsite
-#  args:
-#    - ${{inputs.name}}
-#    - ${{inputs.domainName}}
-#    - ${{inputs.certificateArn}}
+  image: Dockerfile
+  args:
+    - ${{inputs.name}}
+    - ${{inputs.domainName}}
+    - ${{inputs.certificateArn}}

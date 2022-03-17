@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+set -e
+
 name=$1
 domainName=$2
 certificateArn=$3

@@ -20,4 +20,4 @@ RUN npm install -g aws-cdk
 COPY --from=build /app/out .
 COPY deployInfraSPA.sh .
 
-ENTRYPOINT ["./deployInfraSPA.sh"]
+ENTRYPOINT ["/deployInfraSPA.sh"]

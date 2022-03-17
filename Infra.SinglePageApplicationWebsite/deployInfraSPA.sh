@@ -8,7 +8,7 @@ outputFile="cdk.out/outputs.json"
 
 echo "Running CDK deploy"
 cdk deploy \
-  --app=./Infra.SinglePageApplicationWebsite \
+  --app=/Infra.SinglePageApplicationWebsite \
   --require-approval never \
   --outputs-file $outputFile \
   -c Name="$name" \

@@ -10,7 +10,6 @@ COPY . .
 RUN dotnet publish -o out -c Release --no-restore
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0
-WORKDIR /app
 
 RUN apt-get update --assume-yes
 RUN apt-get install jq --assume-yes

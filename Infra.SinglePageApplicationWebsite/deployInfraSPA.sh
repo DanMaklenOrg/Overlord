@@ -8,7 +8,7 @@ outputFile="cdk.out/outputs.json"
 
 echo "Running CDK deploy"
 cdk deploy \
-  --app=Infra.SinglePageApplicationWebsite \
+  --app=./Infra.SinglePageApplicationWebsite \
   --require-approval never \
   --outputs-file $outputFile \
   -c Name="$name" \
@@ -16,7 +16,7 @@ cdk deploy \
   -c CertificateArn="$certificateArn" \
   --dry-run --profile=personal
 
-bucketArn=$(jq ".[].bucket-arn" $outputFile)
+bucketArn=$(jq ".[].bucketName" $outputFile)
 edgeDomain=$(jq ".[].edge-distribute-endpoint" $outputFile)
 
 echo "Reminder: add CNAME record to your domain \`$domainName\` with value \`$edgeDomain\`"

@@ -5,8 +5,7 @@ COPY Infra.SinglePageApplicationWebsite.csproj .
 
 RUN dotnet restore
 
-COPY **.cs .
-COPY **/**.cs .
+COPY . .
 
 RUN dotnet publish -o out -c Release --no-restore
 

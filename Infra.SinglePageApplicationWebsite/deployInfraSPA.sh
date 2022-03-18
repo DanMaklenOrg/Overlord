@@ -17,8 +17,8 @@ cdk deploy \
   -c DomainName="$domainName" \
   -c CertificateArn="$certificateArn"
 
-bucketArn=$(jq ".[].bucketName" $outputFile)
-edgeDomain=$(jq ".[].edge-distribute-endpoint" $outputFile)
+bucketArn=$(jq -r '.[].bucketName' $outputFile)
+edgeDomain=$(jq -r '.[].edgeDistributeEndpoint' $outputFile)
 
 echo "Reminder: add CNAME record to your domain \`$domainName\` with value \`$edgeDomain\`"
 echo "::setOutputs name=bucketArn::$bucketArn"

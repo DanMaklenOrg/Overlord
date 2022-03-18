@@ -19,8 +19,7 @@ cdk deploy \
   --outputs-file $outputFile \
   -c Name="$name" \
   -c DomainName="$domainName" \
-  -c CertificateArn="$certificateArn" \
-  --dry-run --profile=personal
+  -c CertificateArn="$certificateArn"
 
 bucketArn=$(jq ".[].bucketName" $outputFile)
 edgeDomain=$(jq ".[].edge-distribute-endpoint" $outputFile)

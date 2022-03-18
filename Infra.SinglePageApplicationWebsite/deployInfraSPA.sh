@@ -21,4 +21,4 @@ bucketName=$(jq -r '.[].bucketName' $outputFile)
 edgeDomain=$(jq -r '.[].edgeDistributeEndpoint' $outputFile)
 
 echo "Reminder: add CNAME record to your domain \`$domainName\` with value \`$edgeDomain\`"
-echo "::setOutputs name=bucketName::$bucketName"
+echo "::set-output name=bucketName::$bucketName"

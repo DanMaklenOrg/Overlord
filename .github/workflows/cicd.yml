@@ -37,5 +37,5 @@ jobs:
       - run: sudo apt-get update -y
       - run: sudo apt-get install nodejs npm -y
       - run: sudo npm install -g aws-cdk
-      - run: cdk deploy
+      - run: cdk deploy --require-approval never
         working-directory: Core

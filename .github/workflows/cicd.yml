@@ -27,7 +27,7 @@ jobs:
   deploy-core-infra:
     name: Deploy Core Infrastructure
     runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v2

@@ -1,0 +1,39 @@
+name: Core Infra CICD
+on:
+  push:
+    branches:
+      - master
+  pull_request: { }
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: "eu-west-1"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'
+      - uses: actions/checkout@v3
+      - run: dotnet restore
+      - run: dotnet publish -c Release --no-restore
+        working-directory: Core
+
+  deploy-core-infra:
+    name: Deploy Core Infrastructure
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'
+      - uses: actions/checkout@v3
+      - run: dotnet restore
+      - run: cdk deploy
+        working-directory: Core

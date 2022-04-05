@@ -34,8 +34,7 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - uses: actions/checkout@v3
-      - run: dotnet restore
-      - run: apt-get update-y
+      - run: apt-get update -y
       - run: apt-get install nodejs npm -y
       - run: npm install -g aws-cdk
       - run: cdk deploy

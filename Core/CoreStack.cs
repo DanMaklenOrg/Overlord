@@ -1,8 +1,8 @@
-namespace Overlord.Core;
-
 using Amazon.CDK;
 using Constructs;
 using Overlord.Core.CustomConstructs;
+
+namespace Overlord.Core;
 
 internal sealed class CoreStack : Stack
 {
@@ -11,5 +11,6 @@ internal sealed class CoreStack : Stack
     {
         MainVpc mainVpc = new MainVpc(this);
         MainEcsCluster _ = new MainEcsCluster(this, mainVpc);
+        var __ = new MainDatabase(this, mainVpc);
     }
 }

@@ -15,7 +15,7 @@ public class MainDatabase : DatabaseInstance
             SubnetType = SubnetType.PUBLIC,
         },
         Engine = DatabaseInstanceEngine.POSTGRES,
-        InstanceType = InstanceType.Of(InstanceClass.BURSTABLE2, InstanceSize.MICRO),
+        InstanceType = InstanceType.Of(InstanceClass.BURSTABLE3, InstanceSize.MICRO),
     })
     {
     }

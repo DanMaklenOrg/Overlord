@@ -15,6 +15,8 @@ RUN apt-get update -y
 RUN apt-get install jq -y
 RUN apt-get install nodejs npm -y
 RUN npm install -g aws-cdk
+RUN npm install -g n
+RUN n stable
 
 COPY --from=build /app/bin .
 COPY deployInfraSPA.sh .

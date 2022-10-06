@@ -6,9 +6,9 @@ namespace Overlord.Core.CustomConstructs;
 
 public class MainDatabase : DatabaseInstance
 {
-    public MainDatabase(Stack scope, Vpc mainVpc) : base(scope, "mainDb", new DatabaseInstanceProps
+    public MainDatabase(Stack scope, Vpc mainVpc) : base(scope, "db", new DatabaseInstanceProps
     {
-        InstanceIdentifier = "MainDatabase",
+        InstanceIdentifier = "MainDb",
         Vpc = mainVpc,
         VpcSubnets = new SubnetSelection
         {
@@ -16,6 +16,7 @@ public class MainDatabase : DatabaseInstance
         },
         Engine = DatabaseInstanceEngine.POSTGRES,
         InstanceType = InstanceType.Of(InstanceClass.BURSTABLE3, InstanceSize.MICRO),
+        AllocatedStorage = 20.0,
     })
     {
     }

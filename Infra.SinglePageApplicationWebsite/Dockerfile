@@ -11,10 +11,9 @@ RUN dotnet publish -o bin -c Release --no-restore
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 
-RUN apt-get update --assume-yes
-RUN apt-get install jq --assume-yes
-RUN apt-get install npm --assume-yes
-RUN npm install -g n
+RUN apt-get update -y
+RUN apt-get install jq -y
+RUN apt-get install nodejs npm -y
 RUN npm install -g aws-cdk
 
 COPY --from=build /app/bin .
